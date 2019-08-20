@@ -1,0 +1,40 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="suma-componente">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+  </template>
+
+  <script>
+    /**
+     * `suma-componente`
+     * primer componente
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class SumaComponente extends Polymer.Element {
+      static get is() {
+        return 'suma-componente';
+      }
+      static get properties() {
+        return {
+          resultadoSuma: {
+            type: Number,
+            computed: '_getSuma(operador1, operador2)',
+            notify: true
+          }
+        };
+      }
+      _getSuma(operador1, operador2) {
+        return operador1 + operador2;
+      }
+    }
+    window.customElements.define(SumaComponente.is, SumaComponente);
+  </script>
+</dom-module>

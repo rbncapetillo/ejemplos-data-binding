@@ -1,0 +1,58 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="./suma-componente.html">
+<link rel="import" href="./resta-componente.html">
+<link rel="import" href="./division-componente.html">
+<link rel="import" href="./multiplicacion-componente.html">
+
+<dom-module id="calculadora-componente">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <p>El resultado de la suma es: [[resultadoSuma]]</p>
+    <p>El resultado de la resta es: [[resultadoResta]]</p>
+    <p>El resultado de la division es: [[resultadoDivision]]</p>
+    <p>El resultado de la multiplicación es: [[resultadoMultiplicacion]]</p>
+    <suma-componente operador1="{{operador1}}" operador2="{{operador2}}" resultado-suma="{{resultadoSuma}}"></suma-componente>
+    <resta-componente operador1="{{operador1}}" operador2="{{operador2}}" resultado-resta="{{resultadoResta}}"></resta-componente>
+    <division-componente operador1="{{operador1}}" operador2="{{operador2}}" resultado-division="{{resultadoDivision}}"></division-componente>
+    <multiplicacion-componente operador1="{{operador1}}" operador2="{{operador2}}" resultado-multiplicacion="{{resultadoMultiplicacion}}"></multiplicacion-componente>
+  </template>
+
+  <script>
+    /**
+     * `calculadora-componente`
+     * primer componente
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ContenedorComponentes extends Polymer.Element {
+      static get is() {
+        return 'calculadora-componente';
+      }
+
+      static get properties() {
+        return {
+          operador1: {
+            type: Number,
+            value: 10,
+            notify: true,
+            reflectToAttribute: true
+          },
+          operador2: {
+            type: Number,
+            value: 2,
+            notify: true,
+            reflectToAttribute: true
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ContenedorComponentes.is, ContenedorComponentes);
+  </script>
+</dom-module>
