@@ -28,13 +28,20 @@
             type: Number,
             computed: '_getDivision(operador1, operador2)',
             notify: true
+          },
+          operador2: {
+            type: Number,
+            observer: '_validator'
           }
         };
       }
-      _getDivision(operador1, operador2) {
-        if (operador2 === 0) {
-          operador2 += 1
+      _validator(newValue, oldValue) {
+        console.log(newValue)
+        if (newValue === 0) {
+          this.set('operador2', 1)
         }
+      }
+      _getDivision(operador1, operador2) {
         return operador1 / operador2;
       }
     }
